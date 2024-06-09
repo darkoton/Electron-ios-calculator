@@ -78,8 +78,8 @@ const controls = {
     if (action && num1.value.includes('.')) {
       num2._value = num1._value;
       num1._value = 0;
-    } else if (num1.value.includes('.')) {
-      return
+    } else if (!action && num1.value.includes('.')) {
+      return;
     }
     num1._value += '.';
   },
@@ -100,10 +100,10 @@ const actions = {
     num1._value = parseFloat((num2._value * num1._value).toFixed(5));
   },
   minus: () => {
-    num1._value = num2._value - num1._value;
+    num1._value = parseFloat((num2._value - num1._value).toFixed(5));
   },
   plus: () => {
-    num1._value = num2._value + num1._value;
+    num1._value = parseFloat((num2._value + num1._value).toFixed(5));
   },
 };
 
@@ -185,7 +185,6 @@ const keyMappings = {
   Backspace: 'c',
   Delete: 'c',
 };
-
 
 window.addEventListener('keydown', event => {
   let code = event.code;
